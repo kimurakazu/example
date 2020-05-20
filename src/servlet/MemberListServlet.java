@@ -50,28 +50,20 @@ public class MemberListServlet extends HttpServlet {
 			String adr = request.getParameter("adr");
 
 			if(name.equals("")) {
-				request.setAttribute("msg", "名前を入力してください。");
-				request.setAttribute("url", "mlist");
-
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
-				dispatcher.forward(request, response);
+				throw new IllegalAccessException("名前を入力してください。");
 			}
 
 			if(adr.equals("")) {
-				request.setAttribute("msg", "住所を入力してください。");
-				request.setAttribute("url", "mlist");
-
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
-				dispatcher.forward(request, response);
+				throw new IllegalAccessException("住所を入力してください。");
 			}
 
-			if(name.length() != 0 && adr.length() != 0) {
-				mdao.Insert(new model.Member(0,name,adr));
-			}
+
+
+			mdao.Insert(new model.Member(0,name,adr));
 
 			response.sendRedirect("mlist");
 
-		}catch(NumberFormatException e){
+		}catch(NumberFormatException | IllegalAccessException e){
 				request.setAttribute("msg", "");
 				request.setAttribute("url", "mlist");
 
