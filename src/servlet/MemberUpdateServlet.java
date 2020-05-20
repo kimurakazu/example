@@ -52,13 +52,30 @@ public class MemberUpdateServlet extends HttpServlet {
 			String adr = request.getParameter("adr");
 			int mid = Integer.parseInt(midStr);
 
+			if(name.equals("")) {
+				request.setAttribute("msg", "名前を入力してください。");
+				request.setAttribute("url", "mlist");
 
-			mdao.update(new model.Member(mid,name,adr));
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+				dispatcher.forward(request, response);
+			}
+
+			if(adr.equals("")) {
+				request.setAttribute("msg", "住所を入力してください。");
+				request.setAttribute("url", "mlist");
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+				dispatcher.forward(request, response);
+			}
+
+			if(name.length() != 0 && adr.length() != 0) {
+				mdao.update(new model.Member(mid,name,adr));
+			}
 
 			response.sendRedirect("mlist");
 
 		}catch(NumberFormatException e){
-				request.setAttribute("msg", "");
+				request.setAttribute("msg", "midが空です");
 				request.setAttribute("url", "mlist");
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");

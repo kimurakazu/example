@@ -27,11 +27,10 @@ table {
 </form>
 <table>
 <tr>
-<th>メンバーID</th><th>氏名</th><th>住所</th>
+<th>氏名</th><th>住所</th>
 </tr>
 <c:forEach var="member" items="${list}">
 <tr>
-<td>${member.mid }</td>
 <td>${member.name }</td>
 <td>${member.adr }</td>
 <td><a href="mupdate?mid=${member.mid }">変更</a></td>
