@@ -1,0 +1,12 @@
+@startuml
+title ページ遷移図
+keijiban_home: 投稿一覧を閲覧
+keijiban_del:GET 削除確認\nPOST 削除
+keijiban_insert:投稿
+
+[*]->keijiban_home
+keijiban_home-->keijiban_del:リンク\nnumber
+keijiban_del-->keijiban_del:POST\nnumber
+keijiban_home-->keijiban_insert:リンク\nname\nmain
+keijiban_insert-->keijiban_insert:POST\nnumber\nname\nmain\ntime
+@enduml
