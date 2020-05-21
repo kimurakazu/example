@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+package Keijiban{
+	class HomeServlet{
+		+doGet()
+	}
+	class DelServlet{
+		+doGet()
+		+doPost()
+	}
+	class InsertServlet{
+		+doGet()
+		+doPost()
+	}
+
+}
+package model{
+	class ResDAO{
+		+findAll():ArrayList
+		+findByNumber(int number):Res
+		+insert(Res r)
+		+delete(int number)
+	}
+	class Res{
+		-number : int
+		-name : String
+		-main : String
+		-time : TimeStamp
+		Res(number,name,main,time)
+	}
+}
+HomeServlet..>ResDAO
+DelServlet..>ResDAO
+InsertServlet..>ResDAO
+
+ResDAO ..> Res
+
+
+@enduml
