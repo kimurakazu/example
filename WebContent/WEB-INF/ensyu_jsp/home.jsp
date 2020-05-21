@@ -21,10 +21,16 @@ td{
 th,td{
 	padding: 0.2em 2em;
 }
-
-tr {
-	margin-bottom: 3em;
+table {
+	border-collapse: collapse;
 }
+#del {
+	background-color: #cccccc;
+}
+#yohaku {
+	background-color: #ffffff;
+}
+
 </style>
 </head>
 <body>
@@ -38,11 +44,12 @@ tr {
 <th>${Res.number }</th>
 <th>${Res.name }</th>
 <th>${Res.time }</th>
-<td><a href="keijiban_del?number=${Res.number }">削除</a></td>
+<td id="del"><a href="keijiban_del?number=${Res.number }">削除</a></td>
 </tr>
 <tr>
 <td colspan="4"><pre>${Res.main }</pre></td>
 </tr>
+<tr><td id="yohaku" colspan="4"></td></tr>
 </c:forEach>
 </table>
 
