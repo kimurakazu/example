@@ -1,0 +1,14 @@
+@startuml
+title 商品一覧 /shouhin GET
+actor ユーザ
+ユーザ -> KeijibanServlet++:GETリクエスト
+KeijibanServlet -> ResDAO**:生成()
+KeijibanServlet -> ResDAO++:findAll()
+ResDAO -> Res**:リストを生成
+ResDAO --> KeijibanServlet--:Resリスト
+KeijibanServlet -> Request++:setAttribute(Resリスト)
+Request--
+KeijibanServlet -> keijiban.jsp++:フォワード
+KeijibanServlet--
+keijiban.jsp --> ユーザ:表示
+@enduml
