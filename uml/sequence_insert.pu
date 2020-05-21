@@ -1,0 +1,12 @@
+@startuml
+title 投稿/keijiban_ins
+actor ユーザ
+ユーザ -> KeijibanServlet:POSTリクエスト
+KeijibanServlet -> ResDAO**:生成()
+KeijibanServlet -> ResDAO++:Resリスト
+ResDAO -> Res**:リストに追加
+
+
+KeijibanServlet -> keijiban_home:リダイレクト
+keijiban_home --> ユーザ:表示
+@enduml

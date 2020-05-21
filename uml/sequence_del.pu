@@ -1,0 +1,15 @@
+@startuml
+title 投稿削除/keijiban_del
+actor ユーザ
+ユーザ -> KeijibanServlet++:GETリクエスト
+KeijibanServlet -> keijiban_del.jsp++:フォワード
+keijiban_del.jsp --> ユーザ:削除確認表示
+ユーザ -> KeijibanServlet:POSTリクエスト
+KeijibanServlet -> ResDAO**:生成()
+KeijibanServlet -> ResDAO++:number
+ResDAO -> Res**:リストを削除
+
+
+KeijibanServlet -> keijiban_home:リダイレクト
+keijiban_home --> ユーザ:表示
+@enduml
