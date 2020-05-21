@@ -7,6 +7,5 @@ keijiban_insert:投稿
 [*]->keijiban_home
 keijiban_home-->keijiban_del:リンク\nnumber
 keijiban_del-->keijiban_del:POST\nnumber
-keijiban_home-->keijiban_insert:リンク\nname\nmain
-keijiban_insert-->keijiban_insert:POST\nnumber\nname\nmain\ntime
+keijiban_home-->keijiban_insert:POST\nname\nmain
 @enduml
